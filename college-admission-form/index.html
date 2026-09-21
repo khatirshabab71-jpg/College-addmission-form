@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Admission Form</title>
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Linking external CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Main Form Header -->
+        <header class="form-header">
+            <div class="logo-wrapper">
+                <span class="logo-icon">🎓</span>
+            </div>
+            <h1>AL SHABAB COLLEGE</h1>
+            <h2>College Admission Application Form</h2>
+            <p>Please complete all sections carefully. Fields marked with (<span class="required-star">*</span>) are
+                mandatory.</p>
+        </header>
+
+        <!-- Admission Form -->
+        <form id="admissionForm" class="admission-form" novalidate>
+
+            <!-- Section A: Student Information -->
+            <fieldset class="form-section">
+                <legend><span class="section-badge">A</span> Student Information</legend>
+
+                <div class="form-grid">
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required-star">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="e.g. John Doe" required>
+                        <small class="error-msg" id="fullNameError"></small>
+                    </div>
+
+                    <!-- Father Name -->
+                    <div class="form-group">
+                        <label for="fatherName">Father's Name <span class="required-star">*</span></label>
+                        <input type="text" id="fatherName" name="fatherName" placeholder="e.g. Richard Doe" required>
+                        <small class="error-msg" id="fatherNameError"></small>
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="form-group">
+                        <label for="dob">Date of Birth <span class="required-star">*</span></label>
+                        <input type="date" id="dob" name="dob" required>
+                        <small class="error-msg" id="dobError"></small>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label for="gender">Gender <span class="required-star">*</span></label>
+                        <select id="gender" name="gender" required>
+                            <option value="">-- Select Gender --</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <small class="error-msg" id="genderError"></small>
+                    </div>
+
+                    <!-- CNIC / B-Form -->
+                    <div class="form-group">
+                        <label for="cnic">CNIC / B-Form Number <span class="required-star">*</span></label>
+                        <input type="text" id="cnic" name="cnic" placeholder="e.g. 12345-6789012-3" required>
+                        <small class="error-msg" id="cnicError"></small>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required-star">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g. 03001234567" required>
+                        <small class="error-msg" id="phoneError"></small>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required-star">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required>
+                        <small class="error-msg" id="emailError"></small>
+                    </div>
+
+                    <!-- Profile Picture -->
+                    <div class="form-group">
+                        <label for="profilePic">Profile Picture</label>
+                        <input type="file" id="profilePic" name="profilePic" accept="image/*">
+                        <small class="error-msg" id="profilePicError"></small>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section B: Academic Information -->
+            <fieldset class="form-section">
+                <legend><span class="section-badge">B</span> Academic Information</legend>
+
+                <div class="form-grid">
+                    <!-- Previous School/College Name -->
+                    <div class="form-group grid-col-2">
+                        <label for="previousSchool">Previous School / College Name <span
+                                class="required-star">*</span></label>
+                        <input type="text" id="previousSchool" name="previousSchool"
+                            placeholder="e.g. Govt Higher Secondary School" required>
+                        <small class="error-msg" id="previousSchoolError"></small>
+                    </div>
+
+                    <!-- Previous Qualification -->
+                    <div class="form-group">
+                        <label for="qualification">Previous Qualification <span class="required-star">*</span></label>
+                        <select id="qualification" name="qualification" required>
+                            <option value="">-- Select Qualification --</option>
+                            <option value="Matriculation">Matriculation (10th)</option>
+                            <option value="Intermediate">Intermediate (12th)</option>
+                            <option value="A-Levels">O/A Levels</option>
+                        </select>
+                        <small class="error-msg" id="qualificationError"></small>
+                    </div>
+
+                    <!-- Passing Year -->
+                    <div class="form-group">
+                        <label for="passingYear">Passing Year <span class="required-star">*</span></label>
+                        <input type="number" id="passingYear" name="passingYear" min="2000" max="2026"
+                            placeholder="e.g. 2024" required>
+                        <small class="error-msg" id="passingYearError"></small>
+                    </div>
+
+                    <!-- Obtained Marks -->
+                    <div class="form-group">
+                        <label for="obtainedMarks">Obtained Marks <span class="required-star">*</span></label>
+                        <input type="number" id="obtainedMarks" name="obtainedMarks" min="0" placeholder="e.g. 850"
+                            required>
+                        <small class="error-msg" id="obtainedMarksError"></small>
+                    </div>
+
+                    <!-- Total Marks -->
+                    <div class="form-group">
+                        <label for="totalMarks">Total Marks <span class="required-star">*</span></label>
+                        <input type="number" id="totalMarks" name="totalMarks" min="1" placeholder="e.g. 1100" required>
+                        <small class="error-msg" id="totalMarksError"></small>
+                    </div>
+
+                    <!-- Calculated Percentage -->
+                    <div class="form-group">
+                        <label for="percentage">Calculated Percentage (%)</label>
+                        <input type="text" id="percentage" name="percentage" placeholder="Auto calculated" readonly>
+                    </div>
+
+                    <!-- Calculated Grade -->
+                    <div class="form-group">
+                        <label for="grade">Calculated Grade</label>
+                        <input type="text" id="grade" name="grade" placeholder="Auto calculated" readonly>
+                    </div>
+
+                    <!-- Desired Program / Department -->
+                    <div class="form-group grid-col-2">
+                        <label for="department">Desired Program / Department <span
+                                class="required-star">*</span></label>
+                        <select id="department" name="department" required>
+                            <option value="">-- Select Department --</option>
+                            <option value="Software Engineering">Software Engineering</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                            <option value="Business Administration">Business Administration</option>
+                        </select>
+                        <small class="error-msg" id="departmentError"></small>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section C: Address Information -->
+            <fieldset class="form-section">
+                <legend><span class="section-badge">C</span> Address Information</legend>
+
+                <div class="form-grid">
+                    <!-- Permanent Address -->
+                    <div class="form-group grid-col-2">
+                        <label for="address">Permanent Address <span class="required-star">*</span></label>
+                        <input type="text" id="address" name="address" placeholder="House/Street/Area Address" required>
+                        <small class="error-msg" id="addressError"></small>
+                    </div>
+
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="city">City <span class="required-star">*</span></label>
+                        <input type="text" id="city" name="city" placeholder="e.g. Lahore" required>
+                        <small class="error-msg" id="cityError"></small>
+                    </div>
+
+                    <!-- Province -->
+                    <div class="form-group">
+                        <label for="province">Province / State <span class="required-star">*</span></label>
+                        <input type="text" id="province" name="province" placeholder="e.g. Punjab" required>
+                        <small class="error-msg" id="provinceError"></small>
+                    </div>
+
+                    <!-- Postal Code -->
+                    <div class="form-group">
+                        <label for="postalCode">Postal Code</label>
+                        <input type="text" id="postalCode" name="postalCode" placeholder="e.g. 54000">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section D: Guardian Information -->
+            <fieldset class="form-section">
+                <legend><span class="section-badge">D</span> Guardian Information</legend>
+
+                <div class="form-grid">
+                    <!-- Guardian Name -->
+                    <div class="form-group">
+                        <label for="guardianName">Guardian Name <span class="required-star">*</span></label>
+                        <input type="text" id="guardianName" name="guardianName" placeholder="e.g. Richard Doe"
+                            required>
+                        <small class="error-msg" id="guardianNameError"></small>
+                    </div>
+
+                    <!-- Relationship -->
+                    <div class="form-group">
+                        <label for="relationship">Relationship <span class="required-star">*</span></label>
+                        <select id="relationship" name="relationship" required>
+                            <option value="">-- Select Relationship --</option>
+                            <option value="Father">Father</option>
+                            <option value="Mother">Mother</option>
+                            <option value="Brother">Brother</option>
+                            <option value="Uncle">Uncle</option>
+                            <option value="Guardian">Legal Guardian</option>
+                        </select>
+                        <small class="error-msg" id="relationshipError"></small>
+                    </div>
+
+                    <!-- Guardian Phone -->
+                    <div class="form-group">
+                        <label for="guardianPhone">Guardian Phone Number <span class="required-star">*</span></label>
+                        <input type="tel" id="guardianPhone" name="guardianPhone" placeholder="e.g. 03007654321"
+                            required>
+                        <small class="error-msg" id="guardianPhoneError"></small>
+                    </div>
+
+                    <!-- Guardian Occupation -->
+                    <div class="form-group">
+                        <label for="guardianOccupation">Guardian Occupation</label>
+                        <input type="text" id="guardianOccupation" name="guardianOccupation"
+                            placeholder="e.g. Civil Engineer">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section E: Additional Information -->
+            <fieldset class="form-section">
+                <legend><span class="section-badge">E</span> Additional Information</legend>
+
+                <div class="form-grid">
+                    <!-- Hostel Required -->
+                    <div class="form-group">
+                        <label>Hostel Required? <span class="required-star">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="hostel" value="Yes"> Yes
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="hostel" value="No" checked> No
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Transport Required -->
+                    <div class="form-group">
+                        <label>Transport Required? <span class="required-star">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="transport" value="Yes"> Yes
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="transport" value="No" checked> No
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- How did you hear about us? -->
+                    <div class="form-group grid-col-2">
+                        <label for="referral">How did you hear about the college?</label>
+                        <select id="referral" name="referral">
+                            <option value="">-- Select Option --</option>
+                            <option value="Social Media">Social Media (Facebook/Instagram)</option>
+                            <option value="Website">College Website</option>
+                            <option value="Friends/Family">Friends / Family</option>
+                            <option value="Newspaper">Newspaper / Banner</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Additional Comments -->
+                    <div class="form-group grid-col-2">
+                        <label for="comments">Additional Comments / Special Needs</label>
+                        <textarea id="comments" name="comments" rows="3"
+                            placeholder="Any extra information you want to share..."></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section F: Declaration & Submission -->
+            <fieldset class="form-section declaration-section">
+                <legend><span class="section-badge">F</span> Declaration</legend>
+
+                <div class="declaration-box">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="declaration" name="declaration" required>
+                        <span>I confirm that all the information provided in this application form is true, correct, and
+                            complete to the best of my knowledge.</span>
+                    </label>
+                    <small class="error-msg" id="declarationError"></small>
+                </div>
+
+                <!-- Form Action Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="btn btn-submit" id="submitBtn">
+                        <span>Submit Application</span> 🚀
+                    </button>
+                    <button type="reset" class="btn btn-reset" id="resetBtn">
+                        <span>Reset Form</span> 🔄
+                    </button>
+                </div>
+            </fieldset>
+
+        </form>
+
+        <!-- Admission Summary Result (Hidden initially, displayed on success) -->
+        <div id="summaryModal" class="summary-card hidden">
+            <div class="summary-header">
+                <h3>🎉 Application Submitted Successfully!</h3>
+                <p>Here is your official College Admission Summary:</p>
+            </div>
+            <div class="summary-body" id="summaryContent">
+                <!-- Data populated dynamically via JS -->
+            </div>
+            <button class="btn btn-primary" onclick="window.print()">Print Summary 🖨️</button>
+        </div>
+
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
