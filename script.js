@@ -338,6 +338,27 @@ admissionForm.addEventListener("submit", function (event) {
         // Render summary table HTML
         renderSummary(student);
         
+        // Send data to Python backend server using Fetch API
+        fetch("http://127.0.0.1:5000/api/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(student)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`✅ Admission Submitted Successfully!\nAssigned Student ID: ${data.studentId}\nSaved to local storage folder.`);
+            } else {
+                alert(`❌ Server Error: ${data.message}`);
+            }
+        })
+        .catch(error => {
+            console.error("Error connecting to server:", error);
+            alert("⚠️ Warning: Could not connect to Python server. Make sure 'python server.py' is running!");
+        });
+        
         // Scroll smoothly down to summary card
         summaryModal.scrollIntoView({ behavior: 'smooth' });
     }
