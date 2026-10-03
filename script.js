@@ -335,9 +335,10 @@ admissionForm.addEventListener("submit", function (event) {
             transport: transportSelected
         };
 
-        // Render summary table HTML
-        renderSummary(student);
-        
+        // Disable submit button temporarily to prevent double submission
+        const submitBtn = document.getElementById("submitBtn");
+        if (submitBtn) submitBtn.disabled = true;
+
         // Send data to Python backend server using Fetch API
         fetch("http://127.0.0.1:5000/api/submit", {
             method: "POST",
@@ -349,27 +350,45 @@ admissionForm.addEventListener("submit", function (event) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert(`✅ Admission Submitted Successfully!\nAssigned Student ID: ${data.studentId}\nSaved to local storage folder.`);
+                // Update summary card with assigned Student ID and PDF download link
+                renderSummary(student, data.studentId, data.pdfUrl);
+                alert(`✅ Admission Submitted Successfully!\nAssigned Student ID: ${data.studentId}\nOfficial PDF saved to: D:\\data stored\\${data.studentId}.pdf`);
             } else {
-                alert(`❌ Server Error: ${data.message}`);
+                renderSummary(student, null, null);
+                alert(`❌ Submission Failed: ${data.message}`);
             }
         })
         .catch(error => {
             console.error("Error connecting to server:", error);
+            renderSummary(student, null, null);
             alert("⚠️ Warning: Could not connect to Python server. Make sure 'python server.py' is running!");
+        })
+        .finally(() => {
+            if (submitBtn) submitBtn.disabled = false;
+            // Scroll smoothly down to summary card
+            summaryModal.scrollIntoView({ behavior: 'smooth' });
         });
-        
-        // Scroll smoothly down to summary card
-        summaryModal.scrollIntoView({ behavior: 'smooth' });
     }
 });
 
 /**
  * Renders the admission summary table inside summaryModal
  * @param {Object} student 
+ * @param {string|null} studentId
+ * @param {string|null} pdfUrl
  */
-function renderSummary(student) {
+function renderSummary(student, studentId = null, pdfUrl = null) {
+    let idBanner = "";
+    if (studentId) {
+        idBanner = `
+            <div class="student-id-banner">
+                Assigned Student ID: <strong>${studentId}</strong>
+            </div>
+        `;
+    }
+
     summaryContent.innerHTML = `
+        ${idBanner}
         <table class="summary-table">
             <tr><th>Full Name</th><td>${student.fullName}</td></tr>
             <tr><th>Father's Name</th><td>${student.fatherName}</td></tr>
@@ -384,6 +403,17 @@ function renderSummary(student) {
             <tr><th>Hostel & Transport</th><td>Hostel: ${student.hostel} | Transport: ${student.transport}</td></tr>
         </table>
     `;
+
+    const downloadPdfBtn = document.getElementById("downloadPdfBtn");
+    if (downloadPdfBtn) {
+        if (pdfUrl) {
+            downloadPdfBtn.href = `http://127.0.0.1:5000${pdfUrl}`;
+            downloadPdfBtn.classList.remove("hidden");
+        } else {
+            downloadPdfBtn.classList.add("hidden");
+        }
+    }
+
     summaryModal.classList.remove("hidden");
 }
 
